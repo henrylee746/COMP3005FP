@@ -15,7 +15,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col h-full items-center justify-center">
+    <div className="flex flex-col h-full items-center justify-center">
       <div className="flex flex-col items-center gap-6 text-center">
         <h1 className="max-w-2xl text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
           COMP 3005 - Fall 2025 Final Project: Henry L
@@ -26,7 +26,7 @@ export default function Home() {
         </p>
         <Separator />
         <h3 className="max-w-lg text-2xl font-medium leading-10 tracking-tight text-black dark:text-zinc-50">
-          An application with functionality for{" "}
+          A fitness application with functionality for{" "}
           <i className="text-slate-400">members,</i>{" "}
           <i className="text-violet-400">trainers,</i> and{" "}
           <i className="text-blue-400">administrators.</i>

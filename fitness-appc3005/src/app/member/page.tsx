@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Header from "../../components/Header";
 import {
   Select,
   SelectContent,
@@ -87,7 +88,7 @@ export default function Member() {
   }, []);
 
   return (
-    <div className="dark flex flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="dark:bg-stone-950 h-full flex flex-col items-center justify-center bg-zinc-50 font-sans">
       <h1 className="max-w-s mb-4 text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
         Member's Hub
       </h1>
