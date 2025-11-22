@@ -56,7 +56,9 @@ async function getSessions(): Promise<Session[]> {
   return [
     {
       id: "728ed52f",
-      date: new Date().toLocaleDateString("en-CA"),
+      date: new Date().toLocaleString("en-CA", {
+        timeZone: "America/New_York",
+      }),
       title: "Yoga Session",
       capacity: 50,
       trainer: "Coach Chris",
@@ -64,7 +66,9 @@ async function getSessions(): Promise<Session[]> {
     },
     {
       id: "728edawr",
-      date: new Date().toLocaleDateString("en-CA"),
+      date: new Date().toLocaleString("en-CA", {
+        timeZone: "America/New_York",
+      }),
       title: "Chest Day",
       capacity: 2,
       trainer: "Instructor Mary",
