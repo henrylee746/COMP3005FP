@@ -35,8 +35,8 @@ import { Separator } from "@/components/ui/separator";
 import { IconUserScan } from "@tabler/icons-react";
 import { IconDashboardFilled } from "@tabler/icons-react";
 import { IconCalendarUser } from "@tabler/icons-react";
-import { DataTable } from "./data-table";
-import { sessionColumns, Session, Health } from "./columns";
+import { DataTable } from "../member/data-table";
+import { sessionColumns, Session, Health } from "../member/columns";
 import { useState, useEffect } from "react";
 
 async function getData(): Promise<Health[]> {

@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 
 /*For the Dashboard cardboard, no column definition needed 
-as it only uses a Separator component*/
+as it only uses a Separator*/
 export type Health = {
   id: string;
   date: string;
@@ -14,7 +14,6 @@ export type Health = {
   sessions: string[];
 };
 
-/*For Sessions*/
 export type Session = {
   id: string;
   date: string;
@@ -44,5 +43,17 @@ export const sessionColumns: ColumnDef<Session>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
+  },
+  {
+    accessorKey: "date",
+    header: "Date",
+  },
+  {
+    accessorKey: "title",
+    header: "Session",
+  },
+  {
+    accessorKey: "capacity",
+    header: "Space",
   },
 ];
