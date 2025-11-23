@@ -22,6 +22,8 @@ import MemberDashboard from "./components/MemberDashboard";
 export default async function Members({ params }: { params: { id?: string } }) {
   const members = await prisma.member.findMany();
 
+  console.log(params.id);
+
   return (
     <div className="dark:bg-stone-950 h-full flex flex-col items-center justify-center bg-zinc-50 font-sans">
       <h1 className="max-w-s mb-4 text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
@@ -37,8 +39,6 @@ export default async function Members({ params }: { params: { id?: string } }) {
         <ProfileManagement />
 
         <div className="flex flex-col gap-6">
-          <MemberDashboard id={params.id} defaultMember={members[0]} />
-
           <Card className="w-full 2xl:max-w-2xl xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm">
             <CardHeader>
               <CardTitle className="flex gap-2 items-center">
