@@ -18,7 +18,6 @@ export default async function Members({
       trainer: true,
     },
   });
-
   const { id } = await params;
   return (
     <div
@@ -31,7 +30,7 @@ export default async function Members({
       </h1>
 
       <div className="flex gap-4">
-        <MemberSelect members={members} />
+        <MemberSelect members={members} id={id} />
         <MemberRegistration />
       </div>
 

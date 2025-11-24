@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/card";
 import { IconCalendarUser } from "@tabler/icons-react";
 import { DataTable } from "./data-table";
-import { sessionColumns, Session, Health } from "./columns";
+import { sessionColumns } from "./columns";
+import { Session } from "./types";
 
 export default function GroupClass({ sessions }: { sessions: Session[] }) {
   return (
