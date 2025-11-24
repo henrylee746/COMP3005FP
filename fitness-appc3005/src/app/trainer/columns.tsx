@@ -25,6 +25,12 @@ export type Session = {
   trainerId: number;
 };
 
+export type Trainer = {
+  id: number;
+  email: string;
+  name: string;
+};
+
 export const sessionColumns: ColumnDef<Session>[] = [
   {
     accessorKey: "name",

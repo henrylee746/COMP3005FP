@@ -26,28 +26,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Trainer } from "./columns";
 import React from "react";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-  filterSession: (name: string) => void;
-  trainers: Object[];
+interface WithTrainer {
+  trainer: { name: string };
 }
 
-export function DataTable<TData, TValue>({
+interface DataTableProps<TData extends WithTrainer, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  trainers: Trainer[];
+}
+
+export function DataTable<TData extends WithTrainer, TValue>({
   columns,
   data,
-  filterSession,
   trainers,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [filteredData, setFilteredData] = React.useState(data);
+
+  const handleFilter = (value: string) => {
+    const result = data.filter((session) => session.trainer.name === value);
+    setFilteredData(result);
+  };
 
   const table = useReactTable({
-    data,
+    data: filteredData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onRowSelectionChange: setRowSelection,
@@ -59,23 +68,22 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  const handleFilter = async (value: string) => {
-    const filtered = await filterSession(value);
-    console.log(filtered);
-  };
+  console.log(data);
 
   return (
     <div>
       <div className="flex items-center py-4">
-        <Select onValueChange={(value) => handleFilter(value)}>
+        <Select onValueChange={handleFilter}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select a trainer" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Trainers</SelectLabel>
-              {data.map((session) => (
-                <SelectItem value="Coach Chris">Coach Chris</SelectItem>
+              {trainers.map((trainer) => (
+                <SelectItem key={trainer.id} value={trainer.name}>
+                  {trainer.name}
+                </SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>

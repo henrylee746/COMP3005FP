@@ -11,6 +11,8 @@ import { DataTable } from "./data-table";
 import prisma from "../../../lib/prisma";
 
 export default async function GroupClass() {
+  //Querying so that all list of sessions are displayed before filtering by trainer
+  /*Filters sessions with dates only greater than or equal to (gte) today*/
   const sessions = await prisma.session.findMany({
     where: {
       dateTime: {
@@ -24,16 +26,8 @@ export default async function GroupClass() {
     },
   });
 
+  //Querying so that select dropdown has all list of trainers
   const trainers = await prisma.trainer.findMany();
-
-  const filterSession = async (name: string) => {
-    "use server";
-    return await prisma.session.findMany({
-      where: {
-        name,
-      },
-    });
-  };
 
   return (
     <Card className="w-full xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm">
@@ -50,7 +44,7 @@ export default async function GroupClass() {
         <DataTable
           columns={sessionColumns}
           data={sessions}
-          filterSession={filterSession}
+          trainers={trainers}
         />
       </CardContent>
     </Card>
