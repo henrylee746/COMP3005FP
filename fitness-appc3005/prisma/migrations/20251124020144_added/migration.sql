@@ -31,8 +31,8 @@ CREATE TABLE "Room" (
 CREATE TABLE "Session" (
     "id" SERIAL NOT NULL,
     "trainerId" INTEGER NOT NULL,
-    "name" TEXT NOT NULL DEFAULT "Session"
     "roomId" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
     "dateTime" TIMESTAMP(3) NOT NULL,
     "capacity" INTEGER NOT NULL,
 
@@ -55,6 +55,7 @@ CREATE TABLE "HealthMetric" (
     "memberId" INTEGER NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "weight" INTEGER NOT NULL,
+    "weightGoal" INTEGER NOT NULL,
 
     CONSTRAINT "HealthMetric_pkey" PRIMARY KEY ("id")
 );
@@ -72,10 +73,10 @@ CREATE UNIQUE INDEX "Room_name_key" ON "Room"("name");
 CREATE UNIQUE INDEX "Booking_memberId_sessionId_key" ON "Booking"("memberId", "sessionId");
 
 -- AddForeignKey
-ALTER TABLE "Session" ADD CONSTRAINT "Session_trainerId_fkey" FOREIGN KEY ("trainerId") REFERENCES "Trainer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Session" ADD CONSTRAINT "Session_roomId_fkey" FOREIGN KEY ("roomId") REFERENCES "Room"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Session" ADD CONSTRAINT "Session_roomId_fkey" FOREIGN KEY ("roomId") REFERENCES "Room"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Session" ADD CONSTRAINT "Session_trainerId_fkey" FOREIGN KEY ("trainerId") REFERENCES "Trainer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Booking" ADD CONSTRAINT "Booking_memberId_fkey" FOREIGN KEY ("memberId") REFERENCES "Member"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -61,7 +61,7 @@ async function main() {
         trainerId: createdTrainers[0].id,
         name: "Lifting with John",
         roomId: createdRooms[0].id,
-        dateTime: new Date("2025-01-10T10:00:00"),
+        dateTime: new Date("2025-12-25T10:00:00"),
         capacity: 20,
       },
       {
@@ -75,7 +75,7 @@ async function main() {
         trainerId: createdTrainers[1].id,
         name: "Calisthenics with Lisa",
         roomId: createdRooms[2].id,
-        dateTime: new Date("2025-01-12T18:00:00"),
+        dateTime: new Date("2025-11-29T18:00:00"),
         capacity: 12,
       },
       {
@@ -123,19 +123,23 @@ async function main() {
       {
         memberId: createdMembers[0].id,
         weight: 184,
+        weightGoal: 175,
       },
       {
         memberId: createdMembers[0].id,
         weight: 186,
+        weightGoal: 176,
         timestamp: new Date("2025-01-05T12:00:00"),
       },
       {
         memberId: createdMembers[1].id,
         weight: 150,
+        weightGoal: 145,
       },
       {
         memberId: createdMembers[2].id,
         weight: 170,
+        weightGoal: 175,
       },
     ],
   });

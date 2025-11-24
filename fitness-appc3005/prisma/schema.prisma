@@ -59,5 +59,6 @@ model HealthMetric {
   memberId  Int
   timestamp DateTime @default(now())
   weight    Int
+  weightGoal Int
   member    Member   @relation(fields: [memberId], references: [id])
 }
