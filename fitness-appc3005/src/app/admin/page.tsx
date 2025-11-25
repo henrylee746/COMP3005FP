@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardAction,
@@ -9,10 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import Header from "../../components/Header";
 import { IconDoor } from "@tabler/icons-react";
 import { IconCirclePlusFilled } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
@@ -20,34 +17,22 @@ import { Label } from "@/components/ui/label";
 import { sessionColumns, Session } from "./columns";
 import { DataTable } from "./data-table";
 import { Calendar24 } from "@/components/calendar-24";
+import prisma from "../../../lib/prisma";
+import RoomBooking from "./RoomBooking";
 
-async function getSessions(): Promise<Session[]> {
-  return [
-    {
-      id: "728ed52f",
-      date: new Date().toLocaleDateString("en-CA"),
-      title: "Yoga Session",
-      capacity: 50,
-      trainer: "Coach Chris",
-      room: "101",
+export default async function Member() {
+  const sessions = await prisma.session.findMany({
+    where: {
+      dateTime: {
+        gte: new Date(),
+      },
     },
-    {
-      id: "728edawr",
-      date: new Date().toLocaleDateString("en-CA"),
-      title: "Chest Day",
-      capacity: 2,
-      trainer: "Instructor Mary",
-      room: "",
+    include: {
+      //Joins with room and trainer tables
+      room: true,
+      trainer: true,
     },
-  ];
-}
-
-export default function Member() {
-  const [sessions, setSessions] = useState<Session[]>([]);
-
-  useEffect(() => {
-    getSessions().then(setSessions);
-  }, []);
+  });
 
   return (
     <div className="dark:bg-stone-950 h-full flex flex-col items-center justify-center bg-zinc-50 font-sans">
@@ -55,20 +40,7 @@ export default function Member() {
         Admin Portal
       </h1>
       <div className="flex w-full gap-4 flex-wrap justify-center items-center">
-        <Card className="w-full xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm">
-          <CardHeader>
-            <CardTitle className="flex gap-2 items-center">
-              Room Booking
-              <IconDoor />
-            </CardTitle>
-            <CardDescription>
-              Book different rooms for the following class sessions
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <DataTable columns={sessionColumns} data={sessions} />
-          </CardContent>
-        </Card>
+        <RoomBooking sessions={sessions} />
         <Card className="w-full xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm">
           <CardHeader>
             <CardTitle className="flex gap-2 items-center">

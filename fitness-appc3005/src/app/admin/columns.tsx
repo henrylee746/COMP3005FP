@@ -58,11 +58,7 @@ export const sessionColumns: ColumnDef<Session>[] = [
     },
   },
   {
-    accessorKey: "date",
-    header: "Date",
-  },
-  {
-    accessorKey: "title",
+    accessorKey: "name",
     header: "Session",
   },
   {
@@ -70,11 +66,29 @@ export const sessionColumns: ColumnDef<Session>[] = [
     header: "Space",
   },
   {
-    accessorKey: "trainer",
+    accessorKey: "trainer.name",
     header: "Trainer",
   },
   {
-    accessorKey: "room",
+    accessorKey: "room.name",
     header: "Room",
+  },
+  {
+    accessorKey: "dateTime",
+    header: "Date",
+    cell: ({ row }) => {
+      const value = row.getValue<Date>("dateTime");
+
+      const date = new Date(value);
+      const formatted =
+        date.toLocaleDateString("en-CA") +
+        " " +
+        date.toLocaleTimeString("en-CA", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+      return formatted;
+    },
   },
 ];

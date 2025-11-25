@@ -53,5 +53,19 @@ export const sessionColumns: ColumnDef<WithTrainer, Session>[] = [
   {
     accessorKey: "dateTime",
     header: "Date",
+    cell: ({ row }) => {
+      const value = row.getValue<Date>("dateTime");
+
+      const date = new Date(value);
+      const formatted =
+        date.toLocaleDateString("en-CA") +
+        " " +
+        date.toLocaleTimeString("en-CA", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+      return formatted;
+    },
   },
 ];
