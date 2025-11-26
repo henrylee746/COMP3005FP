@@ -34,7 +34,9 @@ export default function ClassManagement({ trainers }: { trainers: Trainer[] }) {
           Class Management
           <IconCirclePlusFilled />
         </CardTitle>
-        <CardDescription>Create new sessions here</CardDescription>
+        <CardDescription>
+          Create new sessions here (all fields required).
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex w-full items-center  gap-2">
@@ -46,12 +48,14 @@ export default function ClassManagement({ trainers }: { trainers: Trainer[] }) {
                 type="text"
                 placeholder="Session Name"
                 name="sessionName"
+                required={true}
               />
               <Input
                 id="capacity"
                 type="number"
                 placeholder="Capacity"
                 name="capacity"
+                required={true}
               />{" "}
               <Select name="trainer">
                 <SelectTrigger className="w-[180px]">
@@ -72,7 +76,7 @@ export default function ClassManagement({ trainers }: { trainers: Trainer[] }) {
             <div className="flex flex-col gap-4 mt-6">
               <Calendar24 />
               <CardDescription>Room</CardDescription>
-              <RadioGroup name="roomId" defaultValue="1">
+              <RadioGroup name="roomId" defaultValue="1" required={true}>
                 <div className="flex items-center gap-3">
                   <RadioGroupItem value="1" id="1" />
                   <Label htmlFor="1">Studio A</Label>

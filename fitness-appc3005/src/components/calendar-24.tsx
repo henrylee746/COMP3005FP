@@ -55,7 +55,7 @@ export function Calendar24() {
                   setDate(value);
                   setOpen(false);
                 }}
-                required
+                required={true}
               />
             </PopoverContent>
           </Popover>
@@ -70,7 +70,7 @@ export function Calendar24() {
             id="time-picker"
             step="1"
             value={time}
-            required
+            required={true}
             onChange={(e) => setTime(e.target.value)}
             className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden"
           />

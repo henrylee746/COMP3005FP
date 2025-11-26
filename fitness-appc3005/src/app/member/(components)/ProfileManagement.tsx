@@ -22,7 +22,10 @@ export default function ProfileManagement({ id }: { id: string[] }) {
           Profile Management
           <IconUserScan />
         </CardTitle>
-        <CardDescription>Update your details/fitness goals</CardDescription>
+        <CardDescription>
+          Update your details/fitness goals (all fields optional, input what you
+          need).
+        </CardDescription>
       </CardHeader>
       <form action={updateMember}>
         {/*Hidden Input to retrieve memberId, so we know each member to update details*/}
