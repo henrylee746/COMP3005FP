@@ -3,8 +3,8 @@ import MemberRegistration from "./MemberRegistration";
 import MemberSelect from "./MemberSelect";
 import ProfileManagement from "./ProfileManagement";
 import MemberDashboard from "./MemberDashboard";
-import GroupClass from "./GroupClass";
-import DefaultPage from "./DefaultPage";
+import GroupClass from "../_components/GroupClass";
+import DefaultPage from "../_components/DefaultPage";
 
 export default async function Members({
   params,

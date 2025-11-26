@@ -1,6 +1,6 @@
 import prisma from "../../../lib/prisma";
-import RoomBooking from "./RoomBooking";
-import ClassManagement from "./ClassManagement";
+import RoomBooking from "./_components/RoomBooking";
+import ClassManagement from "./_components/ClassManagement";
 
 export default async function Member() {
   const sessions = await prisma.session.findMany({

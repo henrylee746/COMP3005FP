@@ -12,7 +12,7 @@ import {
 import { IconCalendarUser } from "@tabler/icons-react";
 import { DataTable } from "./data-table";
 import { sessionColumns } from "./columns";
-import { Session } from "./types";
+import { Session } from "../[[...id]]/types";
 
 export default function GroupClass({ sessions }: { sessions: Session[] }) {
   return (

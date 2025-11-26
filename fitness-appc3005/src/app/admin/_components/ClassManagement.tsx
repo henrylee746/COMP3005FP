@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Trainer } from "../trainer/columns";
+import { Trainer } from "../../trainer/_components/columns";
 import { Calendar24 } from "@/components/calendar-24";
 import { createSession } from "@/lib/actions";
 
