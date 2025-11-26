@@ -21,8 +21,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { updateSessionRoom } from "@/lib/actions";
 
 /*For the Dashboard cardboard, no column definition needed 
 as it only uses a Separator*/
@@ -41,64 +43,62 @@ export type Session = {
   title: string;
   capacity: number;
   trainer: string;
+  trainerId: number;
   room: string;
+  roomId: number;
 };
 
 export const sessionColumns: ColumnDef<Session>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
-
+      const session = row.original;
       return (
         <Dialog>
-          <form>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-                  <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DialogTrigger asChild>
-                  <DropdownMenuItem>Edit Room</DropdownMenuItem>
-                </DialogTrigger>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            {/*DialogContent is moved outside of dropdownMenu, 
-          so it doesn't close 
-          when the rest of the dropdown content unmounts
-          after the dropdown menu item is clicked.*/}
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Edit profile</DialogTitle>
-                <DialogDescription>
-                  Make changes to your profile here. Click save when you&apos;re
-                  done.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4">
-                <div className="grid gap-3">
-                  <Label htmlFor="name-1">Name</Label>
-                  <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DialogTrigger asChild>
+                <DropdownMenuItem>Edit Room</DropdownMenuItem>
+              </DialogTrigger>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Edit Room</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>Choose your new room here.</DialogDescription>
+            <form action={updateSessionRoom}>
+              {/* Hidden inputs so we have a reference of session ID*/}
+              <input type="hidden" name="sessionId" value={session.id} />
+
+              <RadioGroup name="roomId" defaultValue="1">
+                <div className="flex items-center gap-3 mt-4">
+                  <RadioGroupItem value="1" id="1" />
+                  <Label htmlFor="1">Studio A</Label>
                 </div>
-                <div className="grid gap-3">
-                  <Label htmlFor="username-1">Username</Label>
-                  <Input
-                    id="username-1"
-                    name="username"
-                    defaultValue="@peduarte"
-                  />
+                <div className="flex items-center gap-3">
+                  <RadioGroupItem value="2" id="2" />
+                  <Label htmlFor="2">Studio B</Label>
                 </div>
-              </div>
+                <div className="flex items-center gap-3">
+                  <RadioGroupItem value="3" id="3" />
+                  <Label htmlFor="3">Cycling Room</Label>
+                </div>
+              </RadioGroup>
+
               <DialogFooter>
                 <DialogClose asChild>
-                  <Button variant="outline">Cancel</Button>
+                  <Button type="submit">Save changes</Button>
                 </DialogClose>
-                <Button type="submit">Save changes</Button>
               </DialogFooter>
-            </DialogContent>
-          </form>
+            </form>
+          </DialogContent>
         </Dialog>
       );
     },
