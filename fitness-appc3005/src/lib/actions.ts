@@ -44,3 +44,45 @@ export async function createSession(formData: FormData) {
 
   revalidatePath("/admin");
 }
+
+/*Register New Member*/
+export const registerMember = async (formData: FormData) => {
+  const email = formData.get("email") as string;
+  const firstName = formData.get("firstName") as string;
+  const lastName = formData.get("lastName") as string;
+
+  await prisma.member.create({
+    data: { email, firstName, lastName },
+  });
+  revalidatePath("/member");
+};
+
+/*Update Profile Details, including making/updating weight metric & target*/
+export const updateMember = async (formData: FormData) => {
+  const email = formData.get("email") as string;
+  const firstName = formData.get("firstName") as string;
+  const lastName = formData.get("lastName") as string;
+  const weight = Number(formData.get("currWeight"));
+  const weightGoal = Number(formData.get("weightTarget"));
+
+  const id = Number(formData.get("memberId"));
+
+  await prisma.member.update({
+    where: {
+      id,
+    },
+    data: {
+      email,
+      firstName,
+      lastName,
+    },
+  });
+  await prisma.healthMetric.update({
+    where: { id },
+    data: {
+      weight,
+      weightGoal,
+    },
+  });
+  revalidatePath("/member");
+};

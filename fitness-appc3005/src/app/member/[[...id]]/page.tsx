@@ -15,18 +15,22 @@ export default async function Members({
 
   /*To get initial list of members for dropdown*/
   const members = await prisma.member.findMany();
-  const memberId = Number(id);
-  const member = await prisma.member.findUnique({
-    where: { id: memberId },
-    include: {
-      metrics: true,
-      bookings: {
+  const memberId = id ? Number(id) : undefined;
+  //Need the undefined guard because when user first navigates to
+  //Members panel, no member is selected therefore no param id
+  const member = id
+    ? await prisma.member.findUnique({
+        where: { id: memberId },
         include: {
-          session: true,
+          metrics: true,
+          bookings: {
+            include: {
+              session: true,
+            },
+          },
         },
-      },
-    },
-  });
+      })
+    : undefined;
   const sessions = await prisma.session.findMany({
     where: {
       dateTime: {
@@ -55,7 +59,7 @@ export default async function Members({
 
       {id ? (
         <div className="flex flex-wrap items-center justify-center w-full mt-8 mb-4 gap-8">
-          <ProfileManagement />
+          <ProfileManagement id={id} />
 
           <div className="flex flex-col gap-6">
             <MemberDashboard member={member} />

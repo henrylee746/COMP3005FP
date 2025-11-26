@@ -13,38 +13,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-import prisma from "../../../lib/prisma";
+import { registerMember } from "@/lib/actions";
 
 export default function MemberRegistration() {
-  /*
-  const handleSubmit = async (formData: FormData) => {
-    "use server";
-
-    const email = formData.get("email") as string;
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
-
-    await prisma.member.create({
-      data: { email, firstName, lastName },
-    });
-  };
-  */
-
   return (
     <Dialog>
-      {/* SERVER ACTION → assign to `action` */}
-      <form>
-        <DialogTrigger asChild>
-          <Button variant="outline">Register New Member</Button>
-        </DialogTrigger>
+      <DialogTrigger asChild>
+        <Button variant="outline">Register New Member</Button>
+      </DialogTrigger>
 
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Signup</DialogTitle>
-            <DialogDescription>Register as a new member.</DialogDescription>
-          </DialogHeader>
-
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Signup</DialogTitle>
+          <DialogDescription>Register as a new member.</DialogDescription>
+        </DialogHeader>
+        <form action={registerMember}>
           <div className="flex flex-col gap-4">
             <Label htmlFor="email">Email</Label>
             <Input id="email" name="email" type="email" required />
@@ -55,16 +38,13 @@ export default function MemberRegistration() {
             <Label htmlFor="lastName">Last Name</Label>
             <Input id="lastName" name="lastName" type="text" required />
           </div>
-
-          <DialogFooter>
+          <DialogFooter className="pt-6">
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button type="submit">Save</Button>
             </DialogClose>
-
-            <Button type="submit">Save</Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }

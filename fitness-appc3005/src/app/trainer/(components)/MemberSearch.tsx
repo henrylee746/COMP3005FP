@@ -84,12 +84,15 @@ export default function MemberSearch() {
                 <li key={member.id} className="list-disc py-2">
                   {member.firstName} {member.lastName} - {member.email}
                   <p className="text-muted-foreground text-sm">
-                    Weight: {member?.metrics[member.metrics.length - 1].weight}
+                    Weight:{" "}
+                    {member?.metrics[member.metrics.length - 1]?.weight ??
+                      "N/A"}
                   </p>
                   <p className="text-muted-foreground text-sm">
                     {" "}
                     Weight Target:{" "}
-                    {member?.metrics[member.metrics.length - 1].weightGoal}
+                    {member?.metrics[member.metrics.length - 1]?.weightGoal ??
+                      "N/A"}
                   </p>
                 </li>
               ))}

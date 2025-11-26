@@ -16,8 +16,8 @@ export async function POST(req: Request) {
     const members = await prisma.member.findMany({
       where: {
         AND: [
-          { firstName: { contains: firstName, mode: "insensitive" } },
-          { lastName: { contains: lastName, mode: "insensitive" } },
+          { firstName: { equals: firstName, mode: "insensitive" } },
+          { lastName: { equals: lastName, mode: "insensitive" } },
         ],
       },
       include: {

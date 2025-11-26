@@ -9,13 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import prisma from "@/lib/prisma";
 
 export default async function MemberDashboard({ member }: { member: any }) {
   console.log(member);
-  const currWeight = member?.metrics[member.metrics.length - 1].weight;
-  const lastSubmitted = member?.metrics[member.metrics.length - 1].timestamp;
-  const weightGoal = member?.metrics[member.metrics.length - 1].weightGoal;
+  const currWeight = member?.metrics[member.metrics.length - 1]?.weight;
+  const lastSubmitted = member?.metrics[member.metrics.length - 1]?.timestamp;
+  const weightGoal = member?.metrics[member.metrics.length - 1]?.weightGoal;
   const pastClasses = member?.bookings.map((booking: any) => (
     <div key={booking.sessionId}>
       {booking.session.dateTime < new Date() ? (
@@ -44,7 +43,7 @@ export default async function MemberDashboard({ member }: { member: any }) {
       </CardHeader>
 
       <CardContent>
-        <p className="text-sm">Weight: {currWeight} lbs</p>
+        <p className="text-sm">Weight (lbs): {currWeight ?? "N/A"} </p>
         <p className="text-muted-foreground text-sm">
           Last submitted:{" "}
           {new Date(lastSubmitted ?? new Date()).toLocaleDateString("en-CA")}
@@ -53,7 +52,7 @@ export default async function MemberDashboard({ member }: { member: any }) {
         <div className="flex h-16 items-center justify-center space-x-6 text-xs lg:text-sm">
           <div className="text-center">
             Weight Target:{" "}
-            <p className="font-bold leading-5"> {weightGoal} lbs </p>
+            <p className="font-bold leading-5"> {weightGoal ?? "N/A"} </p>
           </div>
           <Separator orientation="vertical" />
           <ul className="px-2">
