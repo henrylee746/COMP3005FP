@@ -1,8 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ Prisma ORM
 
 ## Getting Started
 
-First, run the development server:
+First, once you've cloned the repo, install all dependicies using:
+
+npm i or npm install (or whicever package manager you prefer, I use pnpm). 
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -15,8 +19,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
