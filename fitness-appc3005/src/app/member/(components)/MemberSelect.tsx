@@ -9,7 +9,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function MemberSelect({
   members,

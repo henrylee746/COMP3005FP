@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { IconUserScan } from "@tabler/icons-react";
-import { updateMember } from "@/lib/actions";
+import { updateMember, updateMetrics } from "@/lib/actions";
 
 export default function ProfileManagement({ id }: { id: string[] }) {
   return (
@@ -22,17 +22,18 @@ export default function ProfileManagement({ id }: { id: string[] }) {
           Profile Management
           <IconUserScan />
         </CardTitle>
-        <CardDescription>
-          Update your details/fitness goals (all fields optional, input what you
-          need).
-        </CardDescription>
+        <CardDescription>Update your details/fitness goals</CardDescription>
       </CardHeader>
-      <form action={updateMember}>
-        {/*Hidden Input to retrieve memberId, so we know each member to update details*/}
-        <input type="hidden" name="memberId" value={id[0]} />
-        <CardContent>
+
+      <CardContent>
+        <form action={updateMember}>
+          {/*Hidden Input to retrieve memberId, so we know each member to update details*/}
+          <input type="hidden" name="memberId" value={id[0]} />
           <div className="flex flex-col gap-4">
-            <CardDescription>Personal Details</CardDescription>
+            <div className="flex flex-col gap-2">
+              <CardTitle>Personal Details</CardTitle>
+              <CardDescription>All fields optional.</CardDescription>
+            </div>
 
             <Input id="email" type="email" name="email" placeholder="Email" />
             <Input
@@ -48,14 +49,25 @@ export default function ProfileManagement({ id }: { id: string[] }) {
               placeholder="Last Name"
             />
           </div>
-          <div className="flex flex-col gap-4 mt-6">
-            <CardTitle>Fitness Details</CardTitle>
+          <Button type="submit" className="w-full mt-4" variant="secondary">
+            Update
+          </Button>
+        </form>
+        <form action={updateMetrics}>
+          <input type="hidden" name="memberId" value={id[0]} />
+
+          <div className="flex flex-col gap-4 my-4">
+            <div className="flex flex-col gap-2">
+              <CardTitle>Fitness Details</CardTitle>
+              <CardDescription>All fields required.</CardDescription>
+            </div>
             <Label htmlFor="currWeight">Current Weight</Label>
             <Input
               id="currWeight"
               type="number"
               name="currWeight"
               placeholder="e.g. 156"
+              required={true}
             />
             <Label htmlFor="weightTarget"> Weight Target (lbs)</Label>
             <Input
@@ -63,15 +75,15 @@ export default function ProfileManagement({ id }: { id: string[] }) {
               type="number"
               name="weightTarget"
               placeholder="e.g. 150"
+              required={true}
             />
           </div>
-        </CardContent>
-        <CardFooter className="flex-col gap-2 mt-4">
           <Button type="submit" className="w-full">
             Update
           </Button>
-        </CardFooter>
-      </form>
+        </form>
+      </CardContent>
+      <CardFooter className="flex-col"></CardFooter>
     </Card>
   );
 }

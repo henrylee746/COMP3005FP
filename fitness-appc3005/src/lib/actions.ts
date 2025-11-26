@@ -64,13 +64,11 @@ export const updateMember = async (formData: FormData) => {
   const firstName = formData.get("firstName") as string | null;
   const lastName = formData.get("lastName") as string | null;
 
-  const weight = formData.get("currWeight");
-  const weightGoal = formData.get("weightTarget");
-
   const id = Number(formData.get("memberId"));
 
   const memberUpdateData: any = {};
 
+  if (!email && !firstName && !lastName) return;
   if (email) memberUpdateData.email = email;
   if (firstName) memberUpdateData.firstName = firstName;
   if (lastName) memberUpdateData.lastName = lastName;
@@ -80,17 +78,26 @@ export const updateMember = async (formData: FormData) => {
     data: memberUpdateData,
   });
 
+  revalidatePath("/member/[[...id]]", "page");
+};
+
+export const updateMetrics = async (formData: FormData) => {
+  const id = Number(formData.get("memberId"));
+
+  const weight = formData.get("currWeight");
+  const weightGoal = formData.get("weightTarget");
   const metricUpdateData: any = {};
 
   if (weight) metricUpdateData.weight = Number(weight);
   if (weightGoal) metricUpdateData.weightGoal = Number(weightGoal);
 
-  if (weight || weightGoal) metricUpdateData.timestamp = new Date();
+  if (weight || weightGoal) {
+    metricUpdateData.timestamp = new Date();
+    metricUpdateData.memberId = id;
+  }
 
-  await prisma.healthMetric.update({
-    where: { id },
+  await prisma.healthMetric.create({
     data: metricUpdateData,
   });
-
   revalidatePath("/member/[[...id]]", "page");
 };
