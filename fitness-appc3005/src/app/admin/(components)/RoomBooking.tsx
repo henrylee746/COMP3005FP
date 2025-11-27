@@ -10,7 +10,8 @@ import {
 } from "@/components/ui/card";
 
 import { IconDoor } from "@tabler/icons-react";
-import { sessionColumns, Session } from "./columns";
+import { sessionColumns } from "./columns";
+import { Session } from "@/lib/types";
 import { DataTable } from "./data-table";
 
 export default function RoomBooking({ sessions }: { sessions: Session[] }) {

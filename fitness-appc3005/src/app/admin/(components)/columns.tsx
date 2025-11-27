@@ -24,28 +24,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { updateSessionRoom } from "@/lib/actions";
-
-/*For the Dashboard cardboard, no column definition needed 
-as it only uses a Separator*/
-export type Health = {
-  id: string;
-  date: string;
-  weight: number;
-  goal: number;
-  classes: number;
-  sessions: string[];
-};
-
-export type Session = {
-  id: string;
-  date: string;
-  title: string;
-  capacity: number;
-  trainer: string;
-  trainerId: number;
-  room: string;
-  roomId: number;
-};
+import { Session } from "@/lib/types";
 
 export const sessionColumns: ColumnDef<Session>[] = [
   {

@@ -11,26 +11,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { IconZoomCheck } from "@tabler/icons-react";
 import React, { useState } from "react";
+import { MemberExtendedMetrics } from "@/lib/types";
 
 export default function MemberSearch() {
-  type Metric = {
-    id: number;
-    memberId: number;
-    timestamp: Date;
-    weight: number;
-    weightGoal: number;
-  };
-
-  type Member = {
-    email: string;
-    firstName: string;
-    lastName: string;
-    id: number;
-    metrics: Metric[];
-    registeredAt: Date;
-  };
-
-  const [results, setResults] = useState<Member[]>([]);
+  const [results, setResults] = useState<MemberExtendedMetrics[]>([]);
   const [query, setQuery] = useState("");
 
   //async function for looking up member by name (calls /api/member/search)

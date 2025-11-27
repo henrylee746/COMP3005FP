@@ -26,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Trainer } from "./columns";
+import { Trainer } from "@/lib/types";
 import React from "react";
 
 interface WithTrainer {

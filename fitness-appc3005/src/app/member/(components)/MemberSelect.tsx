@@ -9,12 +9,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
+import { Member } from "@/lib/types";
 
 export default function MemberSelect({
   members,
   id,
 }: {
-  members: any;
+  members: Member[];
   id: string[] | undefined;
 }) {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function MemberSelect({
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Members</SelectLabel>
-          {members.map((member: any) => (
+          {members.map((member: Member) => (
             <SelectItem value={String(member.id)} key={member.id}>
               {member.firstName + " " + member.lastName}
             </SelectItem>

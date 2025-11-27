@@ -9,17 +9,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { MemberExtended } from "@/lib/types";
+import { Booking } from "@/lib/types";
 
-export default async function MemberDashboard({ member }: { member: any }) {
-  console.log(member?.bookings);
+export default async function MemberDashboard({
+  member,
+}: {
+  member: MemberExtended;
+}) {
+  console.log(member);
   const currWeight = member?.metrics[member.metrics.length - 1]?.weight;
   const lastSubmitted = member?.metrics[member.metrics.length - 1]?.timestamp;
   const weightGoal = member?.metrics[member.metrics.length - 1]?.weightGoal;
   const pastClasses =
     member?.bookings.filter(
-      (booking: any) => booking.session.dateTime < new Date()
+      (booking: Booking) => booking.session.dateTime < new Date()
     ).length > 0
-      ? member?.bookings.map((booking: any) => (
+      ? member?.bookings.map((booking: Booking) => (
           <div key={booking.sessionId}>
             {booking.session.dateTime < new Date() ? (
               <li className="list-disc">{booking.session.name}</li>
@@ -29,9 +35,9 @@ export default async function MemberDashboard({ member }: { member: any }) {
       : "N/A";
   const upcomingClasses =
     member?.bookings.filter(
-      (booking: any) => booking.session.dateTime > new Date()
+      (booking: Booking) => booking.session.dateTime > new Date()
     ).length > 0
-      ? member?.bookings.map((booking: any) => (
+      ? member?.bookings.map((booking: Booking) => (
           <div key={booking.sessionId}>
             {booking.session.dateTime > new Date() ? (
               <li className="list-disc">{booking.session.name}</li>

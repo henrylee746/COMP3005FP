@@ -14,7 +14,7 @@ export default async function Members({
   const { id } = await params;
 
   /*To get initial list of members for dropdown*/
-  const members = await prisma.member.findMany();
+  const members = await prisma.member.findMany({});
   const memberId = id ? Number(id) : undefined;
   //Need the undefined guard because when user first navigates to
   //Members panel, no member is selected therefore no param id

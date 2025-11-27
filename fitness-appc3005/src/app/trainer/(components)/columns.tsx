@@ -1,33 +1,9 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-
-export type Health = {
-  id: string;
-  date: string;
-  weight: number;
-  goal: number;
-  classes: number;
-  sessions: string[];
-};
+import { Session } from "@/lib/types";
 
 //Session type with room and trainer relations joined together
-export type Session = {
-  capacity: number;
-  dateTime: Date;
-  id: number;
-  name: string;
-  room: object;
-  roomId: number;
-  trainer: object;
-  trainerId: number;
-};
-
-export type Trainer = {
-  id: number;
-  email: string;
-  name: string;
-};
 
 interface WithTrainer {
   trainer: { name: string };

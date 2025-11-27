@@ -22,9 +22,9 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Trainer } from "../../trainer/(components)/columns";
 import { Calendar24 } from "@/components/calendar-24";
 import { createSession } from "@/lib/actions";
+import { Trainer } from "@/lib/types";
 
 export default function ClassManagement({ trainers }: { trainers: Trainer[] }) {
   return (

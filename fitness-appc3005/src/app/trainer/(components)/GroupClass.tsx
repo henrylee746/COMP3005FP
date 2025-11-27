@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardContent,
 } from "@/components/ui/card";
-import { sessionColumns, Session } from "./columns";
+import { sessionColumns } from "./columns";
 import { IconCalendarUser } from "@tabler/icons-react";
 import { DataTable } from "./data-table";
 import prisma from "@/lib/prisma";
