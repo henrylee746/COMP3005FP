@@ -16,10 +16,10 @@ Then, generate an instance of the prisma client by running:
 ```bash
 pnpm run postinstall
 ```
-This should give you a meesage in the console as such: 
+This should give you a message in the console as such: 
 ✔ Generated Prisma Client (7.0.1) to .\generated\prisma 
 
-Finally, run the production server:
+Finally, run the production server (less code compilation, server components don't re-render and are cached instead, etc):
 
 ```bash
 pnpm run build
