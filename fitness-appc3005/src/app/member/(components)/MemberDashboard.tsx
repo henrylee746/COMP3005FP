@@ -17,7 +17,6 @@ export default async function MemberDashboard({
 }: {
   member: MemberExtended | null;
 }) {
-  console.log(member);
   const currWeight = member?.metrics[member.metrics.length - 1]?.weight;
   const lastSubmitted = member?.metrics[member.metrics.length - 1]?.timestamp;
   const weightGoal = member?.metrics[member.metrics.length - 1]?.weightGoal;

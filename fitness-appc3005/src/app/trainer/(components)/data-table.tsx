@@ -81,8 +81,6 @@ export function DataTable<TData extends WithTrainer, TValue>({
     },
   });
 
-  console.log(data);
-
   return (
     <div>
       <div className="flex items-center py-2">

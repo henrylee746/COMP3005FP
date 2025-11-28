@@ -19,7 +19,7 @@ export default function MemberSearch() {
   const [notFound, setNotFound] = useState("");
 
   //async function for looking up member by name (calls /api/member/search)
-  /*would normally use this as a server action but the api route 
+  /*would normally use this as a server action 
     can be used for multiple purposes */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +33,6 @@ export default function MemberSearch() {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.length === 0) {
       setNotFound("No results found.");

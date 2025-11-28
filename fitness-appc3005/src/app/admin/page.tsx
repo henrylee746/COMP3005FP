@@ -1,9 +1,10 @@
-"use cache";
 import prisma from "@/lib/prisma";
 import RoomBooking from "./(components)/RoomBooking";
 import ClassManagement from "./(components)/ClassManagement";
 
 export default async function Member() {
+  "use cache";
+
   const sessions = await prisma.session.findMany({
     where: {
       dateTime: {
@@ -18,8 +19,6 @@ export default async function Member() {
   });
 
   const trainers = await prisma.trainer.findMany();
-
-  console.log(sessions);
 
   return (
     <div className="dark:bg-stone-950 h-full flex flex-col items-center justify-center bg-zinc-50 font-sans">

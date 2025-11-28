@@ -1,4 +1,3 @@
-"use cache";
 import prisma from "@/lib/prisma";
 import MemberRegistration from "../(components)/MemberRegistration";
 import MemberSelect from "../(components)/MemberSelect";
@@ -12,6 +11,8 @@ export default async function Members({
 }: {
   params: Promise<{ id: string[] | undefined }>;
 }) {
+  "use cache";
+
   const { id } = await params;
 
   /*To get initial list of members for dropdown*/

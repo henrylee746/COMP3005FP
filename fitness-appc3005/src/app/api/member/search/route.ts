@@ -12,7 +12,6 @@ export async function POST(req: Request) {
     //if (!query) return;
 
     const [firstName, lastName] = [name.split(" ")[0], name.split(" ")[1]];
-    console.log(firstName, lastName);
     const members = await prisma.member.findMany({
       where: {
         AND: [
