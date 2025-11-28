@@ -2,6 +2,10 @@ This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ P
 
 ## Getting Started
 
+You can either directly access the deployment (easiest) [here](https://comp-3005-fp.vercel.app/):
+
+Or if you'd 
+
 First, once you've cloned the repo, install all dependencies using:
 
 ```bash
