@@ -45,6 +45,9 @@ export default async function Members({
     },
   });
 
+  console.log("memberId:", memberId);
+  console.log("member:", member);
+
   return (
     <div
       className={`dark:bg-stone-950 h-full flex flex-col items-center ${
