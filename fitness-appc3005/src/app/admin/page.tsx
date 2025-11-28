@@ -1,3 +1,4 @@
+"use cache";
 import prisma from "@/lib/prisma";
 import RoomBooking from "./(components)/RoomBooking";
 import ClassManagement from "./(components)/ClassManagement";

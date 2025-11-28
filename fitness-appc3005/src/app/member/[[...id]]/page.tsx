@@ -1,3 +1,4 @@
+"use cache";
 import prisma from "@/lib/prisma";
 import MemberRegistration from "../(components)/MemberRegistration";
 import MemberSelect from "../(components)/MemberSelect";
@@ -30,7 +31,7 @@ export default async function Members({
           },
         },
       })
-    : undefined;
+    : null;
   const sessions = await prisma.session.findMany({
     where: {
       dateTime: {

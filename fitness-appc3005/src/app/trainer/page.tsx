@@ -1,3 +1,4 @@
+"use cache";
 import GroupClass from "./(components)/GroupClass";
 import MemberSearch from "./(components)/MemberSearch";
 

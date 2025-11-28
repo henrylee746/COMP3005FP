@@ -50,7 +50,7 @@ export function Calendar24() {
                 mode="single"
                 selected={date}
                 captionLayout="dropdown"
-                onSelect={(value) => {
+                onSelect={(value: Date) => {
                   setDate(value);
                   setOpen(false);
                 }}

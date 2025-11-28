@@ -22,7 +22,7 @@ export default function GroupClass({
   member,
 }: {
   sessions: SessionExtended[];
-  member: MemberExtended | null | undefined;
+  member: MemberExtended | null;
 }) {
   /*Filters only sessions that the member has not registered for yet*/
   const sessionIds = member

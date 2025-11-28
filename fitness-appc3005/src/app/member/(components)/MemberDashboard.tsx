@@ -15,7 +15,7 @@ import { Booking } from "@/lib/types";
 export default async function MemberDashboard({
   member,
 }: {
-  member: MemberExtended | null | undefined;
+  member: MemberExtended | null;
 }) {
   console.log(member);
   const currWeight = member?.metrics[member.metrics.length - 1]?.weight;
@@ -63,8 +63,7 @@ export default async function MemberDashboard({
       <CardContent>
         <p className="text-sm">Weight (lbs): {currWeight ?? "N/A"} </p>
         <p className="text-muted-foreground text-sm">
-          Last submitted:{" "}
-          {new Date(lastSubmitted ?? new Date()).toLocaleDateString("en-CA")}
+          Last submitted: {lastSubmitted?.toLocaleDateString("en-CA") ?? "N/A"}
         </p>
         <Separator className="my-4 mb-6" />
         <div className="flex h-16 items-center justify-center space-x-6 text-xs lg:text-sm">
