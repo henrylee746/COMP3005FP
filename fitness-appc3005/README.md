@@ -4,18 +4,17 @@ This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ P
 
 First, once you've cloned the repo, install all dependencies using:
 
-npm i or npm install (or whicever package manager you prefer, I use pnpm). 
+```bash
+pnpm i #or pnpm install
+```
+(or whicever package manager you prefer, I use pnpm). 
 
-Then, run the development server:
+Then, run the production server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run build
+#then
+pnpm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the page.
