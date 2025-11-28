@@ -1,8 +1,19 @@
-This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ Prisma ORM
+# COMP 3005 Final Project — Fall 2025
+## Built with Next.js, Prisma ORM, and PostgreSQL
+
+This project implements a gym management system that supports members, trainers, bookings, sessions, and health metrics.
+It includes full CRUD functionality, relational queries, constraints, and a working UI built in Next.js.
+
+A live deployment is available here:
+👉 (https://comp-3005-fp.vercel.app/)
 
 ## Getting Started
 
-First, once you've cloned the repo, install all dependencies using:
+You can either use the deployment (recommended) or run the project locally.
+
+Or if you'd rather compile and run the production version yourself, you can follow the steps below.
+
+1. First, once you've cloned the repo, install all dependencies using:
 
 ```bash
 pnpm i
@@ -11,15 +22,15 @@ pnpm install
 ```
 (or whichever package manager you prefer, I use pnpm). 
 
-Then, generate an instance of the prisma client by running: 
+2. Then, generate an instance of the prisma client by running: 
 
 ```bash
 pnpm run postinstall
 ```
 This should give you a meesage in the console as such: 
-✔ Generated Prisma Client (7.0.1) to .\generated\prisma in 28ms
+✔ Generated Prisma Client (7.0.1) to .\generated\prisma
 
-Finally, run the production server:
+3. Finally, run the production server:
 
 ```bash
 pnpm run build
@@ -27,8 +38,36 @@ pnpm run build
 pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the page. From there, you can access all the various functionalities necessary. 
+Then open [http://localhost:3000](http://localhost:3000).
 
-### For grading purposes:
-- Most prisma queries/mutations will be in ./src/lib/actions.ts
-- The only queries that aren't there are instead located in the api route (./src/app/api/<member/trainer>/route.ts). These routes are responsible for the prisma operations for the Trainers Tab (Filtering Sessions by Trainer, and Member lookup). 
+## 🗂️ Project Structure (Important for Grading)
+### Prisma Operations
+
+Most mutations (create/update/delete) are in:
+./src/lib/actions.ts
+
+Some trainer/member mutations occur inside API routes:
+./src/app/api/<member|trainer>/route.ts
+
+### Queries
+
+Implemented throughout the app inside server components
+(Next.js automatically runs them on the server).
+
+### Database Seeding
+
+Initial data was generated using:
+./prisma/seed.ts
+
+Re-running the seed may fail due to unique constraints (data already inserted).
+
+These points are also demonstrated in the accompanying YouTube demo.
+
+### 🛠️ Tech Stack
+
+- Next.js 16
+- Prisma ORM
+- PostgreSQL
+- TypeScript
+- pnpm (package manager)
+- Server Components + API Routes
