@@ -11,8 +11,6 @@ export default async function Members({
 }: {
   params: Promise<{ id: string[] | undefined }>;
 }) {
-  "use cache";
-
   const { id } = await params;
 
   /*To get initial list of members for dropdown*/
@@ -44,9 +42,6 @@ export default async function Members({
       trainer: true,
     },
   });
-
-  console.log("memberId:", memberId);
-  console.log("member:", member);
 
   return (
     <div

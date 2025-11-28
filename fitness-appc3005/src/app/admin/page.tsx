@@ -2,9 +2,7 @@ import prisma from "@/lib/prisma";
 import RoomBooking from "./(components)/RoomBooking";
 import ClassManagement from "./(components)/ClassManagement";
 
-export default async function Member() {
-  "use cache";
-
+export default async function Admin() {
   const sessions = await prisma.session.findMany({
     where: {
       dateTime: {
