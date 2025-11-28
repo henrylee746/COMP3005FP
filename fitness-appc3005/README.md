@@ -4,9 +4,9 @@ This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ P
 
 You can either directly access the deployment (easiest) [here](https://comp-3005-fp.vercel.app/):
 
-Or if you'd 
+Or if you'd rather compile and run the production version yourself, you can follow the steps below.
 
-First, once you've cloned the repo, install all dependencies using:
+1. First, once you've cloned the repo, install all dependencies using:
 
 ```bash
 pnpm i
@@ -15,7 +15,7 @@ pnpm install
 ```
 (or whichever package manager you prefer, I use pnpm). 
 
-Then, generate an instance of the prisma client by running: 
+2. Then, generate an instance of the prisma client by running: 
 
 ```bash
 pnpm run postinstall
@@ -23,7 +23,7 @@ pnpm run postinstall
 This should give you a meesage in the console as such: 
 ✔ Generated Prisma Client (7.0.1) to .\generated\prisma in 28ms
 
-Finally, run the production server:
+3. Finally, run the production server:
 
 ```bash
 pnpm run build
