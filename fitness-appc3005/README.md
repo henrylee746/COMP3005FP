@@ -5,7 +5,9 @@ This is a project for COMP3005 for the Fall 2025 Semester - done in Next.js w/ P
 First, once you've cloned the repo, install all dependencies using:
 
 ```bash
-pnpm i #or pnpm install
+pnpm i
+#or
+pnpm install
 ```
 (or whicever package manager you prefer, I use pnpm). 
 
