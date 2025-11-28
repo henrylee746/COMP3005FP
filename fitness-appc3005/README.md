@@ -21,7 +21,7 @@ pnpm install
 pnpm run postinstall
 ```
 This should give you a meesage in the console as such: 
-✔ Generated Prisma Client (7.0.1) to .\generated\prisma in 28ms
+✔ Generated Prisma Client (7.0.1) to .\generated\prisma in <sometime> ms
 
 3. Finally, run the production server:
 
