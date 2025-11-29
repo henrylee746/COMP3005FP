@@ -40,7 +40,7 @@ pnpm start
 
 Then open [http://localhost:3000](http://localhost:3000).
 
-## 🗂️ Project Structure (Important for Grading)
+## 🗂️ Project Structure
 
 ### ORM Entity Classes
 
