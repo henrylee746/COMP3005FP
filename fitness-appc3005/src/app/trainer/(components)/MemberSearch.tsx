@@ -11,10 +11,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { IconZoomCheck } from "@tabler/icons-react";
 import React, { useState } from "react";
-import { MemberExtendedMetrics } from "@/lib/types";
+import { MemberInfo } from "@/lib/types";
 
 export default function MemberSearch() {
-  const [results, setResults] = useState<MemberExtendedMetrics[]>([]);
+  const [results, setResults] = useState<MemberInfo[]>([]);
   const [query, setQuery] = useState("");
   const [notFound, setNotFound] = useState("");
 
@@ -62,6 +62,7 @@ export default function MemberSearch() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
+
             <Button type="submit" variant="outline">
               Search
             </Button>
@@ -71,18 +72,14 @@ export default function MemberSearch() {
           {results.length > 0 ? (
             <ul className="p-4">
               {results.map((member) => (
-                <li key={member.id} className="list-disc py-2">
+                <li key={member.email} className="list-disc py-2">
                   {member.firstName} {member.lastName} - {member.email}
                   <p className="text-muted-foreground text-sm">
-                    Weight:{" "}
-                    {member?.metrics[member.metrics.length - 1]?.weight ??
-                      "N/A"}
+                    Weight: {member?.weight ?? "N/A"}
                   </p>
                   <p className="text-muted-foreground text-sm">
                     {" "}
-                    Weight Target:{" "}
-                    {member?.metrics[member.metrics.length - 1]?.weightGoal ??
-                      "N/A"}
+                    Weight Target: {member?.weightGoal ?? "N/A"}
                   </p>
                 </li>
               ))}

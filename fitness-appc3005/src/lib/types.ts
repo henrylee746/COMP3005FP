@@ -54,6 +54,14 @@ export type Member = {
   registeredAt: Date;
 };
 
+export type MemberInfo = {
+  weight: number;
+  weightGoal: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
 export type MemberExtended = Member & {
   bookings: Booking[] | [];
   metrics: HealthMetric[] | [];
