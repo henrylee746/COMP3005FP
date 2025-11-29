@@ -31,7 +31,9 @@ import { useActionState, useState, useEffect } from "react";
 export default function ClassManagement({ trainers }: { trainers: Trainer[] }) {
   type State = {
     success: string | undefined;
-    error: string | undefined;
+    error: any;
+    /*any is used to allow for any type of error,
+    including SQL-level exceptions*/
   };
   const [state, formAction, isPending] = useActionState(
     createSession,

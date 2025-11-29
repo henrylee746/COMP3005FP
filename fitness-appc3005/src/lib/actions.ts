@@ -86,29 +86,39 @@ export async function createSession(initialState: any, formData: FormData) {
     };
   }
 
+  /*
   if (capacity > room.capacity) {
     return {
       success: undefined,
       error: `Session capacity (${capacity}) cannot exceed room capacity (${room.capacity})`,
     };
   }
+  */
 
-  await prisma.session.create({
-    data: {
-      name: sessionName,
-      capacity,
-      trainerId: Number(trainerId),
-      roomId: Number(roomId),
-      dateTime: datetime,
-    },
-  });
+  //As proof that data-level validation is working,
+  // we can remove the conditional above
+  try {
+    await prisma.session.create({
+      data: {
+        name: sessionName,
+        capacity,
+        trainerId: Number(trainerId),
+        roomId: Number(roomId),
+        dateTime: datetime,
+      },
+    });
+    revalidatePath("/admin");
 
-  revalidatePath("/admin");
-
-  return {
-    success: "Session created successfully",
-    error: undefined,
-  };
+    return {
+      success: "Session created successfully",
+      error: undefined,
+    };
+  } catch (error: any) {
+    return {
+      success: undefined,
+      error: error.message,
+    };
+  }
 }
 
 /*Register New Member*/
