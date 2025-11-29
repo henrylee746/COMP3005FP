@@ -68,7 +68,7 @@ Re-running the seed may fail due to unique constraints (data already inserted).
 
 ### Triggers 
 
-Triggers are not natively supported on Prisma. Either have to manually write SQL implementation and grab the data using another library, or use Atlas as a middleware solution
+Triggers are not natively supported on Prisma. Have to manually write SQL implementation, same with views (although is currently a preview feature in beta)
 
 ### Documentation
 
