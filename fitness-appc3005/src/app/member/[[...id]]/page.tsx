@@ -49,9 +49,9 @@ export default async function Members({
         Member's Hub
       </h1>
       <div
-        className={`dark:bg-stone-950 h-full flex flex-col items-center ${
+        className={` h-full flex flex-col items-center ${
           id ? "justify-center" : "justify-start py-8"
-        } bg-zinc-50 font-sans`}
+        } font-sans`}
       >
         <div className="flex gap-4">
           <MemberSelect members={members} id={id} />
