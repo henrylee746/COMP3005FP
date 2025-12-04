@@ -33,7 +33,7 @@ export default function GroupClass({
   );
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   return (
-    <Card className="w-full xl:max-w-2xl lg:max-w-xl md:max-w-lg sm:max-w-md max-w-sm">
+    <Card className="w-full xl:max-w-2xl lg:max-w-lg md:max-w-md sm:max-w-md max-w-sm">
       <CardHeader>
         <CardTitle className="flex gap-2 items-center">
           Group Class Registration <IconCalendarUser />
