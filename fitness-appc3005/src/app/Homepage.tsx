@@ -1,11 +1,5 @@
-import {
-  IconUserFilled,
-  IconUser,
-  IconUserCog,
-  IconBarbell,
-} from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
 import { Separator } from "@/components/ui/separator";
-
 import { FlippingCard } from "@/components/ui/flipping-card";
 
 interface CardData {
