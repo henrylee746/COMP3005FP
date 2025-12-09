@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +31,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 flex flex-col overflow-x-hidden">
           {children}
-          <BackgroundBeams className="pointer-events-none absolute inset-0" />
         </main>
       </body>
     </html>
