@@ -12,6 +12,8 @@ git checkout 9be8d8f0281fae9f4cdf13230b334567757b7a45
 ``` 
 or you can just download the zip and extract the root directory from there.
 
+You can access the deployment here (not affected by post-project changes): https://comp-3005-fp.vercel.app/
+
 # COMP 3005 Final Project — Fall 2025
 ## Built with Next.js, Prisma ORM, and PostgreSQL
 
