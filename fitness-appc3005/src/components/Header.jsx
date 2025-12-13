@@ -39,7 +39,7 @@ const Header = () => {
           </Button>
         </Link>
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="flex sm:flgap-4 items-center">
         <Link href="/signup">
           <InteractiveHoverButton>Sign Up</InteractiveHoverButton>
         </Link>
